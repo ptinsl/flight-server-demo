@@ -17,10 +17,13 @@ dependencies = [
     "pyarrow==23.0.1",
     "azure-storage-blob==12.28.0",
     "polars>=1.38.1",
+    "query-farm-flight-server==0.1.17",
+    "pydantic>=2.0",
 ]
 
 [project.scripts]
-basic-flight-server = "flight_server.basic_flight_server:main"
+vanilla-flight-server = "flight_server.vanilla_flight_server:main"
+airport-flight-server = "flight_server.airport_flight_server:main"
 
 [tool.uv]
 package = true
