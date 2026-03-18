@@ -25,17 +25,15 @@ uv sync
 
 ## Configuration
 
-Set these environment variables (or use `.envrc` with direnv):
+Copy `.env.example` to `.env` and fill in your values:
 
 ```bash
-export AZURE_CONNECTION_STRING="DefaultEndpointsProtocol=https;AccountName=..."
-export AZURE_CONTAINER="your-container"
-export AZURE_PREFIX="optional/path/prefix"   # optional
+AZURE_CONNECTION_STRING="DefaultEndpointsProtocol=https;AccountName=..."
+AZURE_CONTAINER="your-container"
+AZURE_PREFIX="optional/path/prefix"   # optional
 ```
 
-With [direnv](https://direnv.net/), copy `.envrc.example` to `.envrc`, fill in your values, and run `direnv allow` — variables will load automatically on `cd`.
 
----
 
 ## Server 1: Vanilla Flight Server
 
@@ -126,23 +124,6 @@ SELECT COUNT(*) FROM db.default.prices_external WHERE Symbol = 'AAPL';
 
 -- Column pruning: only requested columns read from Parquet
 SELECT Symbol, AVG(Close) FROM db.default.prices_external GROUP BY Symbol;
-```
-
-### Running as a long-lived process
-
-**tmux** (interactive, easy to attach/detach):
-```bash
-tmux new -s flight-server
-source .envrc && airport-flight-server
-# Ctrl+b, d to detach
-# tmux attach -t flight-server to reconnect
-```
-
-**systemd** (Linux service, survives reboots):
-```bash
-# Create /etc/systemd/system/airport-flight-server.service
-# with EnvironmentFile pointing to your .envrc
-systemctl enable --now airport-flight-server
 ```
 
 ---
