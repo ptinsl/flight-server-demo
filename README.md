@@ -7,8 +7,6 @@ Two read-only Arrow Flight servers for streaming Delta Lake tables from Azure Bl
 | `vanilla-flight-server` | Standard Arrow Flight | 8815 | Any Arrow Flight client |
 | `airport-flight-server` | Airport (DuckDB extension) | 8815 | DuckDB `ATTACH` |
 
-> This project is a simplified version of [azure-delta-server](https://github.com/patricktinsley/azure-delta-server), which covers a more advanced implementation with server-side query execution and benchmarks.
-
 ## Architecture
 
 ![Architecture](docs/images/architecture.png)
